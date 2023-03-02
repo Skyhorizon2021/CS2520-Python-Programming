@@ -1,20 +1,17 @@
+import sys
 
-a, b = 0, 5
-def main() :
-    global a, b
-    i = 10
-    b = g(i)
-    print(a+b+i)
-def f(i) :
-    n=0
-    while n*n <= i:
-        n = n + 1
-    return n-1
-def g(a) :
-    b=0
-    for n in range(a):
-        i = f(n)
-        b = b+i
-        return b
-main()
-''''''
+def encrypt(msg):
+    evenList = []
+    oddList = []
+    for charIndex in range(0,len(msg),2):
+        evenList.append(msg[charIndex])
+    for charIndex in range(1,len(msg),2):
+        oddList.append(msg[charIndex])
+    cipherList= oddList + evenList
+    for index in range(len(cipherList)):
+        sys.stdout.write(cipherList[index])
+    return cipherList
+def decrypt(msg):
+    
+#print(len("Hello world!"))
+encrypt("Hello,world!")

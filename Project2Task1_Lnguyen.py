@@ -13,26 +13,43 @@ method you used above). It returns the decrypted message.
 the calls functions in (1) to (4) respectively, printing out the result after each function call.
 (6) call the main function to test run the program. You must run the test case provided plus additional two 
 different test runs. Note: a call to main function is a must.'''
+import sys
 
 def get_num_of_characters(inputStr):
-    lengthOfStr = len(inputStr)
+    lengthOfStr = 0
+    for char in inputStr:
+        lengthOfStr+=1
     return lengthOfStr
 
 def output_without_whitespace(inputStr):
-    lengthOfStrNoSpace = len(inputStr) - inputStr.count(' ')
+    #lengthOfStrNoSpace = len(inputStr) - inputStr.count(' ')
+    StrNoSpace=inputStr.replace(" ","")
+    lengthOfStrNoSpace=get_num_of_characters(StrNoSpace)
     return lengthOfStrNoSpace
 
 def get_safe(plaintext):
-    return encryptedMsg
+    evenList = []
+    oddList = []
+    for charIndex in range(0,len(plaintext),2):
+        evenList.append(plaintext[charIndex])
+    for charIndex in range(1,len(plaintext),2):
+        oddList.append(plaintext[charIndex])
+    cipherList= oddList + evenList
+    for index in range(len(cipherList)):
+        sys.stdout.write(cipherList[index])
+    return cipherList
 
 def go_recover(encryptedMsg):
     return plaintext
 
 def main():
-
-    return 
+    print(get_num_of_characters("John is hungry"))
+    print(output_without_whitespace("John is hungry"))
+     
 
 main()
+
+
 
 
 
