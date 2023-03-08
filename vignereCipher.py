@@ -16,7 +16,8 @@ def vignereEncrypt (key, plaintext):
     return cipherText
 
 def main():
-
+    key=input("Please enter the encryption key: ")
+    plaintext=input("Please enter the plaintext: ")
     vignereEncrypt(key,plaintext)
 
 main()
