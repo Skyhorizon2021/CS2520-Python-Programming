@@ -81,6 +81,8 @@ def draw(code):
             
 #get zipcode and replace hyphen
 zipCode = input("Enter your zip code (in ZIP+4 format): ")
+if len(zipCode)!=10:
+    exit("Invalid zipcode")
 zipCode=zipCode.replace('-','')
 #cast zipcode to int
 intZipCode=int(zipCode)
@@ -107,7 +109,6 @@ for index in barCode:
 #draw stop
 draw('1')
 turtle.done()
-turtle.Screen().bye()
 '''Output
 Test(1)
 Enter your zip code (in ZIP+4 format): 55555-1237
@@ -116,4 +117,8 @@ Barcode for this zipcode: 01010010100101001010010100001100101001101000100101
 Test(2)
 Enter your zip code (in ZIP+4 format): 91768-1111
 Modified zipcode: 9176811115
-Barcode for this zipcode: 10100000111000101100100100001100011000110001101010'''
+Barcode for this zipcode: 10100000111000101100100100001100011000110001101010
+Test(3)
+Enter your zip code (in ZIP+4 format): 928001-1212
+Invalid zipcode
+'''
