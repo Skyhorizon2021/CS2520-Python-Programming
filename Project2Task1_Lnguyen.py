@@ -1,5 +1,5 @@
 #Name: Loc Nguyen
-#Project 1 Task 1
+#Project 2 Task 1
 '''Objective: Text analyzer & modifier using functions
 (1) Complete the get_num_of_characters() function, which takes a string as parameter and returns the number of 
 characters in the user's string. We encourage you to use a for loop in this function.   
@@ -13,8 +13,7 @@ method you used above). It returns the decrypted message.
 the calls functions in (1) to (4) respectively, printing out the result after each function call.
 (6) call the main function to test run the program. You must run the test case provided plus additional two 
 different test runs. Note: a call to main function is a must.'''
-import sys
-
+import time
 def get_num_of_characters(inputStr):
     lengthOfStr = 0
     for char in inputStr:
@@ -24,32 +23,159 @@ def get_num_of_characters(inputStr):
 def output_without_whitespace(inputStr):
     #lengthOfStrNoSpace = len(inputStr) - inputStr.count(' ')
     StrNoSpace=inputStr.replace(" ","")
+    print("String with no whitespace is",StrNoSpace)
     lengthOfStrNoSpace=get_num_of_characters(StrNoSpace)
     return lengthOfStrNoSpace
 
-def get_safe(plaintext):
-    evenList = []
-    oddList = []
-    for charIndex in range(0,len(plaintext),2):
-        evenList.append(plaintext[charIndex])
-    for charIndex in range(1,len(plaintext),2):
-        oddList.append(plaintext[charIndex])
-    cipherList= oddList + evenList
-    for index in range(len(cipherList)):
-        sys.stdout.write(cipherList[index])
-    return cipherList
+def vignereEncrypt ():
+    #get desired key and plaintext
+    key=input("Please enter the encryption key: ")
+    plaintext=input("Please enter the plaintext: ")
+    #lowercase all key and plaintext
+    plaintext=plaintext.lower()
+    key=key.lower()
+    #remove whitespace
+    plaintext=plaintext.replace(' ','')
+    #get length of key and initialize empty string to store ciphertext
+    keyLength=len(key)
+    cipherText=''
+    #loop through the length of plaintext char by char and use mod 
+    #to find proper index of key char to encrypt with
+    for i in range(len(plaintext)):
+        letter = plaintext[i]
+        k = key[i % keyLength]
+        cipherText = cipherText + chr(((ord(letter) - 97) + (ord(k)-97)) % 26 + 97)
+    print("Encrypted text is:",cipherText)
+    return cipherText,key
 
-def go_recover(encryptedMsg):
+def go_recover():
+    ciphertext,key=vignereEncrypt()
+    keyLength=len(key)
+    plaintext=''
+
+    for i in range(len(ciphertext)):
+        letter=ciphertext[i]
+        k = key[i % keyLength]
+        plaintext = plaintext + chr(((ord(letter)-97) - (ord(k)-97)) %26 + 97)
+    print("Plaintext is:",plaintext)
     return plaintext
 
 def main():
-    print(get_num_of_characters("John is hungry"))
-    print(output_without_whitespace("John is hungry"))
+    inputStr = input("Enter a string: ")
+    print("You entered",inputStr)
+    print("Number of characters:",get_num_of_characters(inputStr))
+    print("Number of characters:",output_without_whitespace(inputStr))
+    go_recover()
      
 
 main()
+'''Output
+Test(1)
+Enter a string: The only thing we have to fear is fear itself
+You entered The only thing we have to fear is fear itself
+Number of characters: 45
+String with no whitespace is Theonlythingwehavetofearisfearitself
+Number of characters: 36
+Please enter the encryption key: Megafear is contagious
+Please enter the plaintext: The only thing we have to fear is fear itself
+Encrypted text is: flkospykuqftysutvkbczwmvoskiaivbkrnt
+Plaintext is: theonlythingwehavetofearisfearitself
+Test(2)
+Enter a string: How many times you fail matter more than how much you succeed
+You entered How many times you fail matter more than how much you succeed
+Number of characters: 61
+String with no whitespace is Howmanytimesyoufailmattermorethanhowmuchyousucceed    
+Number of characters: 50
+Please enter the encryption key: Python
+Please enter the plaintext: Data Science is important   
+Encrypted text is: symhgpxcgjsvhgfwceiyga
+Plaintext is: datascienceisimportant
+Test(3)
+Enter a string: John is hungry
+You entered John is hungry
+Number of characters: 14
+String with no whitespace is Johnishungry
+Number of characters: 12
+Please enter the encryption key: Hello World
+Please enter the plaintext: John is not hungry
+Encrypted text is: qssywfjcksxukcj
+Plaintext is: johnisnothungry'''
 
+#Project 2 Task 2   
 
+#Biggest possible factor is half the number, start with that number
+#Then, decrease by 1 until count is 1
+start = time.time()
+def isPrime(num):
+    count = num//2
+    while count > 1:
+        if num%count==0:
+            break
+        count-=1
+    else:
+        return num
 
-
-
+def primeGenerator():
+    #start with 1st prime number
+    n = 2
+    #if prime, execution temporarily halt until called
+    #if called again, increment by 1 to check and find the next prime num
+    #tempt. halt again 
+    while True:
+        if isPrime(n):
+            yield(n)
+        n+=1
+#print first 50 prime numbers, skip 50, print 101st prime num
+#skip, print 1100th prime num
+def main():
+    gen = primeGenerator()
+    print("The first 50 prime numbers are")
+    for i in range(1101):
+        if i<50:
+            print(next(gen))
+        elif 51<i<=100:
+            next(gen)
+        elif i==101:
+            print("The 101st prime number is",next(gen))
+        elif 101<i<1100:
+            next(gen)
+        elif i==1100:
+            print("The 1100th prime number is",next(gen))
+main()
+end = time.time()
+#output execution time
+print("The time of execution is",(end-start),"seconds")
+'''Output
+The first 50 prime numbers are
+2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+53
+59
+61
+67
+179
+181
+191
+193
+197
+199
+211
+223
+227
+229
+The 101st prime number is 547
+The 1100th prime number is 8831
+The time of execution is 0.729851484298706 seconds'''
