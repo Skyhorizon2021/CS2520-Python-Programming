@@ -1,3 +1,24 @@
+#Name: Loc Nguyen
+#Date: 03/08/2023
+#Lab 6 Task 1
+
+userInput= input("Please enter a sentence: ")
+userInput=userInput.split(' ')
+concatStr = ''
+for i in userInput:
+    concatStr=concatStr+i+'#'
+print("Final result:",concatStr)
+'''Output
+Test(1)
+Please enter a sentence: Good morning CS2520
+Final result: Good#morning#CS2520#
+Test(2)
+Please enter a sentence: The past is nostalgic 
+The future is hopeful The present is a gift
+Final result: The#past#is#nostalgic#The#future#is#hopeful#The#present#is#a#gift#
+'''
+
+#Lab 6 Task 2
 import random
 intList1 = []
 repeat=True
@@ -54,4 +75,4 @@ Last element of list 1 is 123
 List 1 reversed: [123, 98, 78, 45, 12, 6, 5, 5, 1, 0]
 Both lists sorted in descending order: [123, 98, 78, 50, 49, 45, 45, 44, 42, 41, 33, 30, 29, 28, 26, 25, 22, 19, 19, 18, 15, 15, 14, 12, 11, 6, 5, 5, 1, 0]'''
 
-    
+   
