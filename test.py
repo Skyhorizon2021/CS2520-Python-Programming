@@ -1,61 +1,6 @@
-import random
-#Task 2
-'''Objective: Let L1 be a list of first 100 randomly generated integer numbers in the range [1,
-100], let L2 be the integers within the range [1, 100] that are divisible by either 3 or 4.
-(1) Use list comprehension to generate L1, L2
-(2) Form a set S1 and a frozen set S2 from L1 and L2 respectively.
-(3) Create a new set R1 to contain those elements are either in S1 or in S2. Print out how many
-elements in R1.
-(4) Create a new set R2 to contain those elements are in both S1 and in S2. Print out how many
-elements in R2.
-(5) Create a new set R3 to contain those elements are in S1 but not in S2. Print out how many
-elements in R3'''
-
-L1 = [random.randint(1,100) for i in range(100)]
-print("L1:",L1)
-L2 = [x for x in range(1,100) if (x%3==0 or x%4==0)]
-S1 = set(L1)
-S2 = frozenset(L2)
-print("S1:",S1)
-print("S2:",S2)
-#XOR of S1 and S2 
-R1 = S1^S2
-print("R1:",R1)
-print("There are %d elements in R1" % len(R1))
-#Intersection of S1 and S2
-R2 = S1 & S2
-print("R2:",R2)
-print("There are %d elements in R2" % len(R2))
-#Difference of S1 versus S2 (S1 - S2)
-R3 = S1 - S2
-print("R3:",R3)
-print("There are %d elements in R3" % len(R3))
-'''Output
-Test(1)
-S1: {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 19, 20, 21, 22, 25, 26, 28, 29, 30, 32, 36, 37, 39, 40, 43, 44, 46, 50, 52, 56, 58, 59, 60, 61, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 85, 86, 87, 89, 94, 96, 97, 98, 99}
-S2: frozenset({3, 4, 6, 8, 9, 12, 15, 16, 18, 20, 21, 24, 27, 28, 30, 32, 33, 36, 39, 40, 42, 44, 45, 48, 51, 52, 54, 56, 57, 60, 63, 64, 66, 68, 69, 72, 75, 76, 78, 80, 81, 84, 87, 88, 90, 92, 93, 96, 99})
-R1: {1, 2, 5, 7, 11, 13, 17, 18, 19, 22, 24, 25, 26, 27, 29, 33, 37, 42, 43, 45, 46, 48, 50, 51, 54, 57, 58, 59, 61, 63, 64, 65, 67, 70, 71, 73, 74, 77, 79, 80, 81, 84, 85, 86, 88, 89, 90, 92, 93, 94, 97, 98}
-There are 52 elements in R1
-R2: {3, 4, 6, 8, 9, 12, 15, 16, 20, 21, 28, 30, 32, 36, 39, 40, 44, 52, 56, 60, 66, 68, 69, 72, 75, 76, 78, 87, 96, 99}
-There are 30 elements in R2
-R3: {1, 2, 5, 7, 11, 13, 17, 19, 22, 25, 26, 29, 37, 43, 46, 50, 58, 59, 61, 65, 67, 70, 71, 73, 74, 77, 79, 85, 86, 89, 94, 97, 98}
-There are 33 elements in R3
-Test(2)
-S1: {3, 4, 6, 7, 12, 13, 15, 18, 19, 20, 22, 23, 24, 27, 28, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 43, 45, 46, 47, 48, 50, 52, 53, 54, 57, 58, 59, 60, 64, 65, 66, 69, 70, 71, 72, 74, 75, 76, 77, 80, 81, 82, 83, 84, 85, 87, 88, 90, 91, 92, 93}
-S2: frozenset({3, 4, 6, 8, 9, 12, 15, 16, 18, 20, 21, 24, 27, 28, 30, 32, 33, 36, 39, 40, 42, 44, 45, 48, 51, 52, 54, 56, 57, 60, 63, 64, 66, 68, 69, 72, 75, 76, 78, 80, 81, 84, 87, 88, 90, 92, 93, 96, 99})
-R1: {7, 8, 9, 13, 16, 19, 21, 22, 23, 31, 34, 35, 36, 37, 38, 41, 42, 43, 44, 46, 47, 50, 51, 53, 56, 58, 59, 63, 65, 68, 70, 71, 74, 77, 78, 82, 83, 85, 91, 96, 99}
-There are 41 elements in R1
-R2: {3, 4, 6, 12, 15, 18, 20, 24, 27, 28, 30, 32, 33, 39, 40, 45, 48, 52, 54, 57, 60, 64, 66, 69, 72, 75, 76, 80, 81, 84, 87, 88, 90, 92, 93}
-There are 35 elements in R2
-R3: {7, 13, 19, 22, 23, 31, 34, 35, 37, 38, 41, 43, 46, 47, 50, 53, 58, 59, 65, 70, 71, 74, 77, 82, 83, 85, 91}
-There are 27 elements in R3
-Test(3)
-S1: {3, 5, 6, 7, 8, 9, 11, 15, 18, 19, 20, 22, 23, 24, 25, 27, 28, 29, 30, 31, 37, 38, 39, 40, 42, 43, 47, 48, 50, 51, 52, 53, 54, 
-55, 56, 61, 65, 67, 68, 70, 71, 72, 73, 75, 77, 80, 81, 82, 83, 84, 85, 86, 87, 90, 93, 94, 97, 98}
-S2: frozenset({3, 4, 6, 8, 9, 12, 15, 16, 18, 20, 21, 24, 27, 28, 30, 32, 33, 36, 39, 40, 42, 44, 45, 48, 51, 52, 54, 56, 57, 60, 63, 64, 66, 68, 69, 72, 75, 76, 78, 80, 81, 84, 87, 88, 90, 92, 93, 96, 99})
-R1: {4, 5, 7, 11, 12, 16, 19, 21, 22, 23, 25, 29, 31, 32, 33, 36, 37, 38, 43, 44, 45, 47, 50, 53, 55, 57, 60, 61, 63, 64, 65, 66, 67, 69, 70, 71, 73, 76, 77, 78, 82, 83, 85, 86, 88, 92, 94, 96, 97, 98, 99}
-There are 51 elements in R1
-R2: {3, 6, 8, 9, 15, 18, 20, 24, 27, 28, 30, 39, 40, 42, 48, 51, 52, 54, 56, 68, 72, 75, 80, 81, 84, 87, 90, 93}
-There are 28 elements in R2
-R3: {5, 7, 11, 19, 22, 23, 25, 29, 31, 37, 38, 43, 47, 50, 53, 55, 61, 65, 67, 70, 71, 73, 77, 82, 83, 85, 86, 94, 97, 98}
-There are 30 elements in R3'''
+infile = open("output.txt", "r")   #line 1
+word = infile.readline()   #line 2
+word = word.rstrip()  #line 3
+word = int(word)
+total = sum(word)   #line 4
+print(total)   
