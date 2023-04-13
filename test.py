@@ -1,9 +1,6 @@
-try:
-    if '2' + 2 == 4:
-        raise ValueError
-    else:
-        print('same')
-except ValueError:
-    print('ValueError')
-except:
-    print('NameError')
+t = set()
+print(type(t))
+t.update("1","2","3")
+print(t)
+for element in t:
+    print(element,end="\n")

@@ -288,7 +288,7 @@ S1 = set(L1)
 S2 = frozenset(L2)
 print("S1:",S1)
 print("S2:",S2)
-#XOR of S1 and S2 
+#XOR or symmertric differences of S1 and S2 
 R1 = S1^S2
 print("R1:",R1)
 print("There are %d elements in R1" % len(R1))
