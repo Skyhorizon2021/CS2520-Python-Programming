@@ -10,22 +10,9 @@ included, e.g. Test objects, Score objects,
 '''
 import random
 class Student:
-    def __init__(self, name, id, score, highscore):
+    def __init__(self, name, id, userScore, highscore):
         self.name = name
         self.id = id
-        self.score = score
-        self.highscore = highscore
-        pass
-#initialize question class with question, choices, and correct answer    
-class Question:
-    def __init__(self,question:str,choices:dict,correctAnswer:str):
-        self.question = question
-        self.choices = choices
-        self.correctAnswer = correctAnswer
-        pass
-#update score if userScore is higher than highscore
-class Score:
-    def __init__(self,userScore,highscore):
         self.userScore = userScore
         self.highscore = highscore
     def updateScore(self):
@@ -35,6 +22,22 @@ class Score:
             print("High Score:",self.highscore)
         else:
             pass
+#initialize question class with question, choices, and correct answer    
+class Question:
+    def __init__(self,question:str,choices:dict,correctAnswer:str):
+        self.question = question
+        self.choices = choices
+        self.correctAnswer = correctAnswer
+#update score if userScore is higher than highscore
+class Score:
+    def __init__(self,totalScore,avgScore,numOfAttempt):
+        self.TotalScore = totalScore
+        self.avgScore = avgScore
+        self.numOfAttempt = numOfAttempt 
+    def updateAttempt(self):
+        self.numOfAttempt+=1
+    def updateAvgScore(self):
+        self.avgScore = self.TotalScore / self.numOfAttempt
 #create questions
 def createQuestion():
     q1 = Question("What was the name of the first human in space?",{"A":"Neil Amstrong","B":"Edwin Aldrin","C":"Yuri Gagarin","D":"Victor Glover"},"C")
@@ -61,8 +64,7 @@ def createQuestion():
     return q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20    
 #function to select random question,print it, ask for user input, grade it
 def Questioning(questionBank):
-    #initialize user score and high score of 0
-    scoreBoard = Score(0,0)
+
     #initalize a list containing 20 numbers corresponding to 20 questions. If a question number has been asked, removed it from the list
     qList = [num for num in range(20)]
     #ask users 5 random questions
@@ -79,20 +81,143 @@ def Questioning(questionBank):
             print(choice+".",choiceDict[choice])
         #ask user for their answer
         userAnswer = input("Your answer: ")
+        userAnswer = userAnswer.upper()
         #compare user input with correct answer. If correct, +1 score. If not, do nothing
-        correctAnswer = questionBank[qNumber].correctAnswer
-        if userAnswer == correctAnswer:
-            scoreBoard.userScore+=1
+        correctLetter = questionBank[qNumber].correctAnswer
+        correctAns = choiceDict[correctLetter]
+        if userAnswer == correctLetter:
+            print("Correct answer!")
+            student.userScore+=1
         else:
-            pass   
-             
+            print("Incorrect answer!")
+            print("Correct Answer -",correctLetter+".",correctAns) 
+    #At the end of the quiz, try to update highscore and add 1 to number of attempt
+    student.updateScore()
+    scoreBoard.updateAttempt()
+    #add to total score and calculate average score
+    scoreBoard.TotalScore += student.userScore
+    scoreBoard.updateAvgScore()
+    #Print out how many times test has been taken
+    print("\nScore:",student.userScore)
+    print(scoreBoard.numOfAttempt,"students have taken the quiz")
+    print("Average Score:",scoreBoard.avgScore)         
         
-    pass
 #main function
 def main():
-    name = input("Welcome to Trivia Night! What's your name?\n")
-    print("Hello",name+".","Let's start! You'll be answering 5 questions")
-    print("Please enter only the letter when selecting answer")
-    Questioning(createQuestion())
-
+    #initialize total score,average score, and number of attempt of 0
+    global scoreBoard
+    scoreBoard = Score(0,0,0)
+    repeat = "Y"
+    while repeat=="Y":
+        name = input("\nWelcome to Trivia Night! What's your name?\n")
+        id = input("What's your Bronco ID number?\n")
+        print("Hello",name+".","Let's start! You'll be answering 5 questions")
+        global student
+        student = Student(name,id,0,0)
+        print("Please enter only the letter when selecting answer")
+        Questioning(createQuestion())
+        repeat = input("Press y to take another quiz or any key to quit: ")
+        repeat = repeat.upper()
 main()
+'''Output:
+Test(1)
+
+Welcome to Trivia Night! What's your name?
+Elfy
+What's your Bronco ID number?
+0164585789
+Hello Elfy. Let's start! You'll be answering 5 questions   
+Please enter only the letter when selecting answer
+Question 1 - What was the name of the first human in space?
+A. Neil Amstrong
+B. Edwin Aldrin
+C. Yuri Gagarin
+D. Victor Glover
+Your answer: c
+Correct answer!
+Question 2 - Approximately how big is the observable universe?
+A. 70 billion ly
+B. 86 billion ly
+C. 63 billion ly
+D. 94 billion ly
+Your answer: d
+Correct answer!
+Question 3 - As of 2023, which country ranks 4th in the world in term of nominal GDP?
+A. Germany
+B. Russia
+C. United Kingdom
+D. Japan
+Your answer: a
+Correct answer!
+Question 4 - Which artist painted Girl with a Pearl Earring?
+A. Pablo Picasso
+B. Vincent van Gogh
+C. Johannes Vermeer
+D. Leonardo da Vinci
+Your answer: a
+Incorrect answer!
+Correct Answer - C. Johannes Vermeer
+Question 5 - When did California become a US state?
+A. 1850
+B. 1860
+C. 1847
+D. 1845
+Your answer: d
+Incorrect answer!
+Correct Answer - A. 1850
+New high score achieved!
+High Score: 3
+
+Score: 3
+1 students have taken the quiz
+Average Score: 3.0
+Press y to take another quiz or any key to quit: y
+
+Welcome to Trivia Night! What's your name?
+Allison
+What's your Bronco ID number?
+123456789
+Hello Allison. Let's start! You'll be answering 5 questions
+Please enter only the letter when selecting answer
+Question 1 - In which cell organelles does carbon fixation occur?
+A. Mitochondria
+B. Golgi Body
+C. Ribosomes
+D. Chloroplasts
+Your answer: d
+Correct answer!
+Question 2 - When did California become a US state?
+A. 1850
+B. 1860
+C. 1847
+D. 1845
+Your answer: a
+Correct answer!
+Question 3 - Which artist painted Girl with a Pearl Earring?
+A. Pablo Picasso
+B. Vincent van Gogh
+C. Johannes Vermeer
+D. Leonardo da Vinci
+Your answer: c
+Correct answer!
+Question 4 - How many CSU campuses are in the CSU system?
+A. 19
+B. 23
+C. 25
+D. 21
+Your answer: b
+Correct answer!
+Question 5 - What is the role of chlorophyll?
+A. To produce energy
+B. To produce sugar
+C. To trap light energy
+D. To trap heat energy
+Your answer: c
+Correct answer!
+New high score achieved!
+High Score: 5
+
+Score: 5
+2 students have taken the quiz
+Average Score: 4.0
+Press y to take another quiz or any key to quit: quit'''
