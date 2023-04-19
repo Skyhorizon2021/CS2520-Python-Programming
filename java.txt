@@ -1,0 +1,34 @@
+ Java programming language was developed 
+by Sun Microsystems in  early 1990s. 
+Although it  primarily used for Internet-based applications,
+Java  a simple, efficient, general-purpose language. 
+Java was originally designed for embedded network applications 
+running on multiple platforms. It  a portable, object-oriented, 
+interpreted language. Java  extremely portable.  same Java 
+application will run identically on any computer, regardless of 
+hardware features or operating system, as long as it has a Java 
+interpreter. Besides portability, anor of Java's key advantages 
+is its set of security features which protect a PC running a Java 
+program not only from problems caused by erroneous code but also 
+from malicious programs (such as viruses). You can safely run a 
+Java applet downloaded from  Internet, because Java's security
+features prevent se types of applets from accessing a PC's hard 
+drive or network connections. An applet typically a small Java 
+program that embedded within an HTML page. Java can be considered 
+both a compiled  an interpreted language because its source code
+first compiled into a binary byte-code. This byte-code runs on  
+Java Virtual Machine (JVM), which usually a software-based 
+interpreter.  use of compiled byte-code allows  interpreter 
+( virtual machine) to be small  efficient ( nearly as fast 
+as  CPU running native, compiled code). In addition, this byte-code
+gives Java its portability: it will run on any JVM that correctly
+implemented, regardless of computer hardware or software 
+configuration. Most Web browsers (such as Microsoft Internet 
+Explorer or Netscape Communicator) contain a JVM to run Java applets. Compared to C++ (anor object-oriented language), Java code 
+runs a little slower (because of  JVM) but it more portable 
+ has much better security features.  virtual machine provides 
+isolation between an untrusted Java program   PC running
+ software. Java's syntax similar to C++ but  languages are quite different. For example, Java does not permit programmers to implement operator overloading while C++ does. 
+In addition, Java a dynamic language where you can safely modify a program while it running, whereas C++ does not allow it. This especially important for network applications 
+that cannot afford any downtime. Also, all basic Java data types are predefined  not platform-dependent, whereas some data types can change with  platform used in C or C++ 
+(such as  int type). Java programs are more highly structured than C++ equivalents. All functions (or Java methods)  executable statements in Java must reside within a class while C++ allows function definitions  lines of code to exist outside of classes (as in C-style programs). Global data  methods cannot reside outside of a class in Java, whereas C++ allows this. se restrictions, though cumbersome at times, help maintain  integrity  security of Java programs  forces m to be totally object-oriented.
