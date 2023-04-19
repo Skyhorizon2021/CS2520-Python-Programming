@@ -39,12 +39,12 @@ def createQuestion():
     q12 = Question("As of 2023, which country ranks 4th in the world in term of nominal GDP?",{"A":"Germany","B":"Russia","C":"United Kingdom","D":"Japan"},"A")
     q13 = Question("When did California become a US state?",{"A":"1850","B":"1860","C":"1847","D":"1845"},"A")
     q14 = Question("What is the top grossing movie of all time?",{"A":"Avatar","B":"Avengers: Endgame","C":"Titanic","D":"Spider-Man: No Way Home"},"A")
-    q15 = Question("Who is the current US Secretary of Education?",{"A":"4.5 billion years","B":"4.2 billion years","C":"3.45 billion years","D":"3.78 billion years"},"A")
-    q16 = Question("?",{"A":"Neil Amstrong","B":"Edwin Aldrin","C":"Yuri Gagarin","D":"Victor Glover"},"B")
-    q17 = Question("?",{"A":"Neil Amstrong","B":"Edwin Aldrin","C":"Yuri Gagarin","D":"Victor Glover"},"B")
-    q18 = Question("?",{"A":"Neil Amstrong","B":"Edwin Aldrin","C":"Yuri Gagarin","D":"Victor Glover"},"B")
-    q19 = Question("?",{"A":"Neil Amstrong","B":"Edwin Aldrin","C":"Yuri Gagarin","D":"Victor Glover"},"B")
-    q20 = Question("?",{"A":"Neil Amstrong","B":"Edwin Aldrin","C":"Yuri Gagarin","D":"Victor Glover"},"B")
+    q15 = Question("As of April 2023, who is the current US Secretary of Education?",{"A":"Miguel Cardona","B":"Betsy DeVos","C":"Anthony Blinken","D":"Janet Yellen"},"A")
+    q16 = Question("What is the name of the newest space telescope launched in 2021?",{"A":"Hubble Space Telescope","B":"James Webb Space Telescope","C":"Spitzer Space Telescope","D":"Kepler Space Telescope"},"B")
+    q17 = Question("What does the NASDAQ stock exchange stands for?",{"A":"National Association of Sorted Dealers Automated Quotes","B":"National Association of Securities Dealers Automated Quotations","C":"National Association of Securities Defense Automatic Quoting","D":"National Association of Secured Dealers Actuated Quotations"},"B")
+    q18 = Question("How many CSU campuses are in the CSU system?",{"A":"19","B":"23","C":"25","D":"21"},"B")
+    q19 = Question("How many UC campuses are in the UC system?",{"A":"11","B":"9","C":"10","D":"13"},"B")
+    q20 = Question("What is Cal Poly Pomona address?",{"A":"3708 W Temple Ave","B":"3801 W Temple Ave","C":"1403 W Temple Ave","D":"1803 W Temple Ave"},"B")
     
     pass    
 #function to select random question
