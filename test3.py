@@ -4,7 +4,7 @@ import random
 def aveScore(list):
     sum = 0
     for item in list:
-        sum += item[1]
+        sum += item[2]
     avgScore = sum/len(list)
     return avgScore
 
