@@ -1,0 +1,88 @@
+#Name: Loc Nguyen
+#Date: 04/21/2023
+'''Objective: Convert java code to python code'''
+
+class Bicyble:
+    def __init__(self,gear,speed):
+        self.gear = gear
+        self.speed = speed
+    def applyBrake(self,decrement):
+        self.speed -= decrement
+    def speedUp(self,increment):
+        self.speed += increment
+    def __str__(self):
+        return ("No of gears are " + str(self.gear) + "\n" + "speed of bicycle is " + str(self.speed))
+
+#class mountain bike is a subclass of Bicycle
+class MountainBike(Bicyble):
+    #add seat height as a field
+    def __init__(self, gear, speed, startHeight):
+        #inherit gear and speed from Bicycle
+        super().__init__(gear, speed)
+        #assign reference variable startHeight to the instance variable seatHeight
+        self.seatHeight = startHeight
+    def setHeight(self,newValue):
+        self.seatHeight = newValue
+    def __str__(self):
+        return (super().__str__() + "\nseat height is " + str(self.seatHeight))
+
+#driver code
+def main():
+    mb = MountainBike(3,100,25)
+    print(mb)
+main()
+
+'''Output
+No of gears are 3
+speed of bicycle is 100
+seat height is 25'''
+
+#Name: Loc Nguyen
+#Date: 04/24/2023
+#BOejctive: Conver cpp code to python
+
+#from multipledispatch import dispatch
+
+class Fraction:
+    def __init__(self,n,d):
+        self.num = n
+        self.den = d
+    #overload + operator and return an object fraction after adding 
+    def __add__(self,other):
+        return Fraction(self.num*other.den + self.den*other.num,self.den*other.den)
+    #overload * operator
+    def __mul__(self,other):
+        return Fraction(self.num*other.num,self.den*other.den)
+    #overload == operator
+    def __eq__(self, other):
+        return self.num*other.den == self.den*other.num
+    #string constructor
+    def __str__(self) -> str:
+        return (str(self.num)+"/"+str(self.den))
+#driver code
+def main():
+    f1 = Fraction(3,7)
+    f2 = Fraction(2,5)
+    f3 = Fraction(1,3)
+    f4 = Fraction(2,6)
+    result = f1 + f2 * f3
+    print(result)
+    #compare f1 and f3
+    if(f1 == f3):
+        print("f1 and f3 are the same")
+    else:
+        print("f1 and f3 are not equal")
+    #compare f3 and f4
+    if(f3 == f4):
+        print("f3 and f4 are the same")
+    else: 
+        print("f3 and f4 are not equal")
+    return 0
+#execute driver code
+main()
+'''Output:
+59/105
+f1 and f3 are not equal
+f3 and f4 are the same'''
+        
+        

@@ -1,13 +1,9 @@
-import cmath
-class Complex:
-  def __init__(self, real, imaginary):
-    self._real = real
-    self._imaginary = imaginary
+import datetime
 
-  def __add__(self,rhsValue):
-    real = self._real + rhsValue._real
-    imaginary = self._imaginary + rhsValue._imaginary
-    return Complex(real, imaginary)
-  
-sum = Complex(2,4j)
-print()
+mydate = datetime.datetime.now()
+
+print("__str__() string: ", mydate.__str__())
+print("str() string: ", str(mydate))
+
+print("__repr__() string: ", mydate.__repr__())
+print("repr() string: ", repr(mydate))
