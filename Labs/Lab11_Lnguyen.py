@@ -5,31 +5,37 @@
 as parameters, then sort the list according to the comparison function provided. May use any
 sorting algorithm but do NOT use any predefined sorting function. Test the following:
 (1) Sort the integer list [5, 2, 12, 4, 9, 13, 22, 1, 6, 17] to descending order
-(2) Sort the name list [“Kate”, “Sam”, “Kate”, “Jolly”, “Alp”, “Beta”, “Alpine”, “Samuel”, “Bob”,
-“Joy”] according to alphabetical order.
+(2) Sort the name list ["Kate", "Sam", "Kate", "Jolly", "Alp", "Beta", "Alpine", "Samuel", "Bob",
+"Joy"] according to alphabetical order.
 (3) Sort the tuple list of (name, count) according to name’s alphabetical order. If same name,
-then the one has higher count listed first. [(“Kate”, 3), (“Sam”, 2), (“Kate”, 5), (“Jolly”, 1),
-(“Alp”, 2), (“Beta”, 3), (“Alp”, 1), (“Alpine”, 2), (“Sam”, 4), (“Bob”, 2), (“Sam”, 3)].
+then the one has higher count listed first. [("Kate", 3), ("Sam", 2), ("Kate", 5), ("Jolly", 1),
+("Alp", 2), ("Beta", 3), ("Alp", 1), ("Alpine", 2), ("Sam", 4), ("Bob", 2), ("Sam", 3)].
 '''
 
 #general sorting algorithm using quicksort
 def generalSort(compFunc,data):
-    pass
+    return sorted(data,key=compFunc)
 
 #comparison functions
 #descending order algorithm for list
 def reverseSort(values):
-    pass
+    return -values
 
 #ascending alpha order algo for list
 def alphaSort(values):
-    pass
+    return values
 
 #sort ascending alpha with higher count for secondary criteria 
 def tupleSort(values):
-    pass
+    return values[0],-values[1]
 
 def main():
+    intList = [5, 2, 12, 4, 9, 13, 22, 1, 6, 17]
+    intListSort = generalSort(reverseSort,intList)
+    print(intListSort)
+    nameList = ["Kate", "Sam", "Kate", "Jolly", "Alp", "Beta", "Alpine", "Samuel", "Bob", "Joy"] 
+    tupleList = [("Kate", 3), ("Sam", 2), ("Kate", 5), ("Jolly", 1), ("Alp", 2), ("Beta", 3), ("Alp", 1), ("Alpine", 2), ("Sam", 4), ("Bob", 2), ("Sam", 3)]
+    
     pass
 
 main()
