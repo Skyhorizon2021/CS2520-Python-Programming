@@ -58,7 +58,7 @@ def main():
     
 main()
 '''Output:
-Test(1)
+Test run 1
 p1 = <3,2>
 p2 = <1,5>
 p3 = <4,3>
@@ -67,5 +67,13 @@ Result 2 = <3,10>
 Result 3 = <1,5>
 Result 4 = <7,17>
 Result 5 = <21,-19>
-Test(2)
+Test run 2
+p1 = <10,2>
+p2 = <3,4>
+p3 = <9,5>
+Result 1 = <13,6>
+Result 2 = <30,8>
+Result 3 = <8,32>
+Result 4 = <37,22>
+Result 5 = <205,112>
 '''

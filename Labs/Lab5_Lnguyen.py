@@ -33,7 +33,6 @@ def star():
     for i in range(5):
         pen.pendown()
         pen.forward(20)
-        time.sleep(2)
         pen.right(144)
 #define range of color        
 screen.colormode(255)
