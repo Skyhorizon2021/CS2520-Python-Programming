@@ -1,7 +1,9 @@
 import turtle
 import time
 import random
+#Purpose: Draw a nice pattern using Python Turtle
 
+#Configure the turtle/pen and screen
 pen = turtle.Turtle()
 screen = turtle.Screen()
 screen.title("Asteroid")

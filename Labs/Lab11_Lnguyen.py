@@ -28,7 +28,7 @@ def tupleSort(x,y):
     if x == y:
         return x[1] > y[1]
     return x[0] < y[0]
-
+#generalSorter is a higher order function bc it takes a comparison function as arg
 def generalSorter(data,compFunc):
     for i in range(len(data)):
         for j in range(len(data)):
@@ -68,7 +68,7 @@ reference'''
 #create a list with list comprehension
 L = [i for i in range(1,101)]
 #function to print double val
-print("Doubled list:",list(map((lambda val: val*2),L)))
+print("Doubled list:",list(map(lambda val: val*2,L)))
 #function to print a squared value of odd element in L 
 def squareOdd(x):
     return x**2
